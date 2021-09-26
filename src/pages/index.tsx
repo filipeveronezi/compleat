@@ -3,7 +3,7 @@ import { Cta } from '@/components/organisms/Cta'
 
 const Home = () => {
   return (
-    <div className="h-auto py-44 flex flex-col items-center gap-20 lg:flex-row">
+    <div className="h-auto py-44 flex flex-col gap-20 lg:flex-row lg:items-center">
       <div className="flex-1 flex">
         <Cta
           heading="Complete receitas com o que tiver na geladeira"
@@ -12,18 +12,20 @@ const Home = () => {
           actionHref="#"
         />
       </div>
-      <div className="flex-1 flex flex-col gap-5">
-        <p className="text-4xl font-bold">Escolha alguns ingredientes...</p>
-        <div className="flex gap-8">
-          <Emoji text="🥛" />
-          <Emoji text="🍫" />
-        </div>
-        <p className="text-4xl font-bold">... e encontre receitas!</p>
-        <div className="flex gap-8">
-          <Emoji text="☕" />
-          <Emoji text="🍪" />
-          <Emoji text="🍰" />
-          <Emoji text="🍩" />
+      <div className="flex-1 flex justify-end">
+        <div className="flex flex-col gap-5">
+          <p className="text-4xl font-bold">Escolha alguns ingredientes...</p>
+          <div className="flex gap-8">
+            <Emoji text="🥛" />
+            <Emoji text="🍫" />
+          </div>
+          <p className="text-4xl font-bold">... e encontre receitas!</p>
+          <div className="flex gap-8">
+            <Emoji text="☕" />
+            <Emoji text="🍪" />
+            <Emoji text="🍰" />
+            <Emoji text="🍩" />
+          </div>
         </div>
       </div>
     </div>
