@@ -5,7 +5,8 @@ module.exports = {
     './src/components/**/*.tsx',
     './src/components/*.tsx',
     './src/pages/**/*.tsx',
-    './src/pages/*.tsx'
+    './src/pages/*.tsx',
+    './src/layout/*.tsx'
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -20,6 +21,9 @@ module.exports = {
       fontFamily: {
         sans: ['Quicksand', 'sans-serif'],
         lato: ['Lato', 'sans-serif']
+      },
+      boxShadow: {
+        emoji: '6px 6px 0px 2px #E3DFC8;'
       }
     }
   },
