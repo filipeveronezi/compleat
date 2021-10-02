@@ -26,7 +26,7 @@ module.exports = {
         lato: ['Lato', 'sans-serif']
       },
       boxShadow: {
-        emoji: '6px 6px 0px 2px #E3DFC8;'
+        card: '6px 6px 0px 2px #E3DFC8;'
       }
     }
   },
