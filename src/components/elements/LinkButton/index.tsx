@@ -10,7 +10,7 @@ export const LinkButton = ({ text, href }: Props) => {
   return (
     <div className="flex items-center gap-2">
       <Link href={href}>
-        <a className="font-bold text-2xl md:hover:underline md:hover:mr-2 transition-all">
+        <a className="underline font-bold text-2xl md:hover:underline md:hover:mr-2 transition-all md:no-underline">
           {text}
         </a>
       </Link>

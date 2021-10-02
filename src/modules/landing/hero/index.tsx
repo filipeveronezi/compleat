@@ -14,13 +14,17 @@ export const Hero = () => {
       </div>
       <div className="flex-1 flex justify-end">
         <div className="flex flex-col gap-5">
-          <p className="text-4xl font-bold">Escolha alguns ingredientes...</p>
+          <p className="font-bold text-3xl lg:text-4xl">
+            Escolha alguns ingredientes...
+          </p>
           <div className="flex gap-8">
             <Emoji text="🥛" />
             <Emoji text="🍫" />
           </div>
-          <p className="text-4xl font-bold">... e encontre receitas!</p>
-          <div className="flex gap-8">
+          <p className="font-bold text-3xl lg:text-4xl">
+            ... e encontre receitas!
+          </p>
+          <div className="flex flex-wrap-reverse gap-8">
             <Emoji text="☕" />
             <Emoji text="🍪" />
             <Emoji text="🍰" />
