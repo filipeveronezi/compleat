@@ -1,4 +1,4 @@
-import { Landing } from '@/modules/landing'
+import { Landing } from '@/modules/Landing'
 
 const Home = () => {
   return <Landing />

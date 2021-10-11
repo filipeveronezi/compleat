@@ -1,5 +1,5 @@
-import { Hero } from './hero'
-import { Plans } from './plans'
+import { Hero } from './Hero'
+import { Plans } from './Plans'
 
 export const Landing = () => {
   return (
