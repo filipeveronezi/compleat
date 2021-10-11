@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { animate, AnimatePresence, motion } from 'framer-motion'
 import { Button } from '@/components/elements/Button'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
@@ -9,26 +10,30 @@ export const Header = () => {
 
   return (
     <header className="flex items-center justify-between">
-      <div className="hidden md:block">
-        <Image
-          src="/images/written-logo.svg"
-          width={200}
-          height={38.76}
-          alt="Compleat"
-        />
-      </div>
+      <Link href="/">
+        <a className="hidden md:block">
+          <Image
+            src="/images/written-logo.svg"
+            width={200}
+            height={38.76}
+            alt="Compleat"
+          />
+        </a>
+      </Link>
       <div className="hidden gap-5 lg:flex">
         <Button type="secondary" text="Registrar" />
         <Button type="primary" text="Entrar" />
       </div>
-      <div className="md:hidden">
-        <Image
-          src="/images/logo.svg"
-          width={40}
-          height={31.03}
-          alt="Compleat"
-        />
-      </div>
+      <Link href="/">
+        <a className="md:hidden">
+          <Image
+            src="/images/logo.svg"
+            width={40}
+            height={31.03}
+            alt="Compleat"
+          />
+        </a>
+      </Link>
       <div className="relative lg:hidden">
         <button onClick={() => setIsMenuOpened(true)}>
           <MenuIcon className="w-6 h-6 text-black" />

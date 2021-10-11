@@ -9,7 +9,7 @@ export const Hero = () => {
           heading="Complete receitas com o que tiver na geladeira"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget justo non velit finibus aliquam non vitae arcu. Donec magna lacus, lacinia vitae efficitur vitae, tristique in orci."
           actionText="Explorar"
-          actionHref="#"
+          actionHref="/pesquisar"
         />
       </div>
       <div className="flex-1 flex justify-end">
