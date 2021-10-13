@@ -31,9 +31,11 @@ export const Plans = () => {
             buttonText="Explorar agora"
           />
           <PlanCard
-            title="R$9"
+            title="R$9/mês"
             features={paidFeatures}
             buttonText="Assinar agora"
+            disclaimer="Em breve"
+            disabled
           />
         </div>
       </div>
