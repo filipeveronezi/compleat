@@ -20,7 +20,7 @@ export const Search = () => {
   const searchRecipes = async () => {
     const currentIngredients = ingredients.join(',')
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_KEY}&ingredients=${currentIngredients}&number=2`,
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_KEY}&ingredients=${currentIngredients}&number=6`,
       {
         method: 'GET'
       }
@@ -55,7 +55,7 @@ export const Search = () => {
       </div>
       <div className="mt-10">
         {recipes !== null ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 gap-10 place-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {recipes.map((recipe) => (
               <Recipe key={recipe.id} recipe={recipe}></Recipe>
             ))}
