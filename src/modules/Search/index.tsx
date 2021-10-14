@@ -17,40 +17,16 @@ export const Search = () => {
     ingredients[index] = event.target.value
   }
 
-  const searchRecipes = () => {
-    const recipes: RecipeType[] = [
+  const searchRecipes = async () => {
+    const currentIngredients = ingredients.join(',')
+    const response = await fetch(
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_KEY}&ingredients=${currentIngredients}&number=2`,
       {
-        id: 1,
-        title: 'Receita 1',
-        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
-      },
-      {
-        id: 2,
-        title: 'Receita 2',
-        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
-      },
-      {
-        id: 3,
-        title: 'Receita 3',
-        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
-      },
-      {
-        id: 4,
-        title: 'Receita 4',
-        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
-      },
-      {
-        id: 5,
-        title: 'Receita 5',
-        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
-      },
-      {
-        id: 6,
-        title: 'Receita 6',
-        image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
+        method: 'GET'
       }
-    ]
-    setRecipes(recipes)
+    )
+    const data = await response.json()
+    await setRecipes(data as Array<RecipeType>)
   }
 
   return (
