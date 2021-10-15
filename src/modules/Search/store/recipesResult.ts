@@ -3,10 +3,14 @@ import { RecipeType } from '@/types/Recipe'
 
 interface RecipesResult {
   recipes: RecipeType[] | null
-  setRecipes: (recipe: RecipeType[] | null) => void
+  openedRecipe: RecipeType | null
+  setRecipes: (recipes: RecipeType[] | null) => void
+  setOpenedRecipe: (openedRecipe: RecipeType | null) => void
 }
 
 export const useRecipesResult = create<RecipesResult>((set) => ({
   recipes: null,
-  setRecipes: (recipes) => set({ recipes })
+  openedRecipe: null,
+  setRecipes: (recipes) => set({ recipes }),
+  setOpenedRecipe: (openedRecipe) => set({ openedRecipe })
 }))
