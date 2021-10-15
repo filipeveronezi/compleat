@@ -1,6 +1,7 @@
 import { Button } from '@/components/elements/Button'
 import { Emoji } from '@/components/elements/Emoji'
 import { RecipeType } from '@/types/Recipe'
+import { translate } from '@/utils/translate'
 import { ChangeEvent, useState } from 'react'
 import { Recipe } from './Recipe'
 import { SearchBar } from './SearchBar'
@@ -18,7 +19,9 @@ export const Search = () => {
   }
 
   const searchRecipes = async () => {
-    const currentIngredients = ingredients.join(',')
+    let currentIngredients = ingredients.join(',')
+    currentIngredients = await translate(currentIngredients, 'en')
+    currentIngredients = currentIngredients.replace(', ', ',')
     const response = await fetch(
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_KEY}&ingredients=${currentIngredients}&number=6`,
       {
