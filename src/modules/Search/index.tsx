@@ -6,12 +6,14 @@ import { ChangeEvent, useState } from 'react'
 import { Recipe } from './Recipe'
 import { RecipeModal } from './RecipeModal'
 import { SearchBar } from './SearchBar'
+import { SkeletonRecipeGrid } from './SkeletonRecipeGrid'
 import { useRecipesResult } from './store/recipesResult'
 
 export const Search = () => {
   const { recipes, setRecipes, openedRecipe, setOpenedRecipe } =
     useRecipesResult()
   const [ingredients, setIngredients] = useState<string[]>([''])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -21,17 +23,19 @@ export const Search = () => {
   }
 
   const searchRecipes = async () => {
+    setIsLoading(true)
     let currentIngredients = ingredients.join(',')
     currentIngredients = await translate(currentIngredients, 'en')
     currentIngredients = currentIngredients.replace(', ', ',')
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_KEY}&ingredients=${currentIngredients}&number=6`,
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_KEY}&ingredients=${currentIngredients}&number=8`,
       {
         method: 'GET'
       }
     )
     const data = await response.json()
     await setRecipes(data as Array<RecipeType>)
+    setIsLoading(false)
   }
 
   return (
@@ -60,12 +64,14 @@ export const Search = () => {
         </div>
       </div>
       <div className="mt-10">
-        {recipes !== null ? (
+        {recipes !== null && !isLoading ? (
           <div className="grid grid-cols-1 gap-10 place-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {recipes.map((recipe) => (
               <Recipe key={recipe.id} recipe={recipe}></Recipe>
             ))}
           </div>
+        ) : isLoading ? (
+          <SkeletonRecipeGrid />
         ) : (
           <div className="max-w-screen-sm mx-auto h-full flex flex-col gap-5 items-center justify-center py-32">
             <p className="text-center font-bold text-xl lg:text-3xl">
