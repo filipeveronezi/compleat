@@ -4,11 +4,13 @@ import { RecipeType } from '@/types/Recipe'
 import { translate } from '@/utils/translate'
 import { ChangeEvent, useState } from 'react'
 import { Recipe } from './Recipe'
+import { RecipeModal } from './RecipeModal'
 import { SearchBar } from './SearchBar'
 import { useRecipesResult } from './store/recipesResult'
 
 export const Search = () => {
-  const { recipes, setRecipes } = useRecipesResult()
+  const { recipes, setRecipes, openedRecipe, setOpenedRecipe } =
+    useRecipesResult()
   const [ingredients, setIngredients] = useState<string[]>([''])
 
   const handleChange = (
@@ -34,6 +36,7 @@ export const Search = () => {
 
   return (
     <div>
+      {openedRecipe && <RecipeModal recipe={openedRecipe} />}
       <div className="flex flex-col gap-5 max-w-screen-sm mx-auto">
         {ingredients.map((ingredient, index) => (
           <SearchBar

@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { RecipeType } from '@/types/Recipe'
 import { ArrowRightIcon } from '@heroicons/react/outline'
 import { translate } from '@/utils/translate'
+import { useRecipesResult } from '../store/recipesResult'
+import { useOverlay } from '@/store/useOverlay'
 
 interface Props {
   recipe: RecipeType
@@ -10,6 +12,8 @@ interface Props {
 
 export const Recipe = ({ recipe }: Props) => {
   const [translatedTitle, setTranslatedTitle] = useState<string>('')
+  const { setOpenedRecipe } = useRecipesResult()
+  const { setOverlayState } = useOverlay()
 
   useEffect(() => {
     async function translateTitleToPt() {
@@ -19,8 +23,16 @@ export const Recipe = ({ recipe }: Props) => {
     translateTitleToPt()
   }, [recipe.title])
 
+  const openRecipe = () => {
+    setOpenedRecipe(recipe)
+    setOverlayState(true)
+  }
+
   return (
-    <div className="bg-white w-64 h-56 flex flex-col rounded-xl cursor-pointer shadow-card">
+    <div
+      onClick={() => openRecipe()}
+      className="bg-white w-64 h-56 flex flex-col rounded-xl cursor-pointer shadow-card"
+    >
       <div className="w-full h-3/4 relative">
         <Image
           className="rounded-t-xl"
