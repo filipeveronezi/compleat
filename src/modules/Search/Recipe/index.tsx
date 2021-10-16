@@ -5,6 +5,7 @@ import { ArrowRightIcon } from '@heroicons/react/outline'
 import { translate } from '@/utils/translate'
 import { useRecipesResult } from '../store/recipesResult'
 import { useOverlay } from '@/store/useOverlay'
+import { translateRecipeToPt } from '@/utils/translate/recipe'
 
 interface Props {
   recipe: RecipeType
@@ -12,19 +13,21 @@ interface Props {
 
 export const Recipe = ({ recipe }: Props) => {
   const [translatedTitle, setTranslatedTitle] = useState<string>('')
-  const { setOpenedRecipe } = useRecipesResult()
+  const { setOpenedRecipe, openedRecipe } = useRecipesResult()
   const { setOverlayState } = useOverlay()
 
   useEffect(() => {
     async function translateTitleToPt() {
-      const translatedTitle = await translate(recipe.title, 'pt-BR')
+      const translatedTitle = await translate(recipe.title, 'pt', 'en')
       setTranslatedTitle(translatedTitle)
     }
     translateTitleToPt()
   }, [recipe.title])
 
-  const openRecipe = () => {
-    setOpenedRecipe(recipe)
+  const openRecipe = async () => {
+    const translatedRecipe = await translateRecipeToPt(recipe)
+    console.log(translatedRecipe)
+    setOpenedRecipe(translatedRecipe)
     setOverlayState(true)
   }
 
@@ -45,7 +48,7 @@ export const Recipe = ({ recipe }: Props) => {
         />
       </div>
       <div className="flex items-center justify-center gap-3 px-1">
-        <p className="truncate w-3/4">{translatedTitle}</p>
+        <p className="capitalize truncate w-3/4">{translatedTitle}</p>
         <ArrowRightIcon className="w-6 h-6" />
       </div>
     </div>
