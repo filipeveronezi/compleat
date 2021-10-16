@@ -1,10 +1,4 @@
-interface IngredientType {
-  id: number
-  name: string
-  amount: number
-  unit: string
-  original: string
-}
+import { IngredientType } from '@/types/Ingredient'
 
 export interface RecipeType {
   id: number
