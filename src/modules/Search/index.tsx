@@ -25,7 +25,7 @@ export const Search = () => {
   const searchRecipes = async () => {
     setIsLoading(true)
     let currentIngredients = ingredients.join(',')
-    currentIngredients = await translate(currentIngredients, 'en')
+    currentIngredients = await translate(currentIngredients, 'en', 'pt')
     currentIngredients = currentIngredients.replace(', ', ',')
     const response = await fetch(
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_KEY}&ingredients=${currentIngredients}&number=8`,
